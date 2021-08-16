@@ -1,0 +1,109 @@
+body {
+    background: url(../img/yellow\ wallpaper.jpg) no-repeat center center;
+    background-position: fixed;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    font-family: 'Arvo', serif;
+}
+
+body:after {
+    content: '';
+    background-color: #fbb034;
+    background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    /* Here is your opacity */
+}
+
+.navigation {
+    position: relative;
+}
+
+.navigation:after {
+    content: '';
+    background-color: #fbb034;
+    background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+    box-shadow: 5px 5px 5px#fbb034;
+    /* Here is your opacity */
+}
+
+.pull-right {
+    padding-left: 75%;
+}
+
+@media (max-width: 540px) {
+    .pull-right {
+        padding-left: 0%;
+    }
+}
+
+.nav-link {
+    color: #212529;
+    font-weight: 400;
+}
+
+.jumbotron {
+    text-align: center;
+    padding-top: 100px;
+    letter-spacing: 1.5px;
+}
+
+.jumbotron h1 {
+    font-size: 2.5rem;
+    padding-bottom: 5px;
+    text-shadow: 2px 2px 3px black;
+}
+
+.jumbotron p {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.yellow {
+    box-shadow: 2px 2px 2px #d4a345;
+    border: 2px solid #d4a345;
+    border-radius: 40px;
+    outline: none;
+    margin-top: 20px;
+    min-width: 18%;
+    position: relative;
+}
+
+.yellow:hover {
+    box-shadow: 2px 2px 2px black;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+.yellow:after {
+    content: '';
+    background-color: #fbb034;
+    background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+    /* Here is your opacity */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    padding-top: 5px;
+}
