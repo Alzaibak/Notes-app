@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap" rel="stylesheet">
-    <title>Notes</title>
+    <title>My account</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Help</a>
@@ -36,14 +36,17 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">My notes</a>
+                        </li>
                     </ul>
 
-                    <ul class="navbar-nav pull-right">
+                    <ul class="navbar-nav pull-rightp">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#loginModal" data-bs-toggle="modal">Login</a>
+                            <a class="nav-link active" href="#loginModal" data-bs-toggle="modal">Hello <b>username</b></a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn signup" data-bs-target="#signupModal" data-bs-toggle="modal"> signup</button>
+                            <button type="button" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn signup" data-bs-target="#signupModal" data-bs-toggle="modal"> Logout</button>
                         </li>
                     </ul>
                 </div>
@@ -52,18 +55,10 @@
     </div>
 
 
-    <!--body jumbotron-->
-    <div class="jumbotron" id="main-container">
-        <h1> Your online notes site</h1>
-        <p> You can see your notes anywhere, anytime</p>
-        <p> Your notes are protected and private </p>
-        <button type="button" class="btn btn-lg yellow signup" data-bs-target="#signupModal" data-bs-toggle="modal"> Create an account</button>
-        <button type="button" class="btn btn-lg yellow signup" data-bs-target="#loginModal" data-bs-toggle="modal"> See my notes</button>
-    </div>
 
-    <!--signin form-->
-    <form method="post" id="loginform">
-        <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--edit password form-->
+    <form method="post" id="editpasswordform">
+        <div class="modal" id="editpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -71,48 +66,7 @@
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
-                            Login:
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <!--Sign up message from PHP file-->
-                        <div id="loginpmessage"></div>
-
-                        <div class="form-group">
-                            <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="loginemail" id="loginemail" placeholder="Email:" maxlength="50">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="sr-only"></label>
-                            <input class="form-control" type="password" name="loginpassword" id="loginpassword" placeholder="Password" maxlength="30">
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <label for="" style="width: 50%;"> <input type="checkbox" name="remeberme" id="rememberme"> remember me</label>
-                        <a class="pull-right" data-bs-target="#forgotpasswordModal" data-bs-toggle="modal" data-dismiss="modal">Forgot password?</a>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn pull-left" data-dismiss="modal" data-bs-target="#signupModal" data-bs-toggle="modal"> Register </button>
-                        <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="Sign in">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <!--forgot password form-->
-    <form method="post" id="forgotpasswordform">
-        <div class="modal" id="forgotpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
-                    &times;
-                  </button>
-                        <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
-                            Forgot your password?
+                            Edit password?
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -122,7 +76,7 @@
 
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="forgotpasswordemail" id="forgotpasswordemail" placeholder="Please enter your email address" maxlength="50">
+                            <input class="form-control" type="password" name="editpassword" id="editpassword" placeholder="Please enter your new password" maxlength="50">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -135,9 +89,9 @@
         </div>
     </form>
 
-    <!--signup form -->
-    <form method="post" id="signupform">
-        <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--edit username form-->
+    <form method="post" id="editusernameform">
+        <div class="modal" id="editusernameModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -145,33 +99,22 @@
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
-                            Create your account easily
+                            Change username?
                         </h4>
                     </div>
                     <div class="modal-body">
 
                         <!--Sign up message from PHP file-->
-                        <div id="signupmessage"></div>
+                        <div id="forgotpasswordmessage"></div>
 
                         <div class="form-group">
-                            <label for="username" class="sr-only"></label>
-                            <input class="form-control" type="text" name="username" id="username" placeholder="Username" maxlength="30">
-                        </div>
-                        <div class="form-group">
                             <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="email" id="email" placeholder="Email Address" maxlength="50">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="sr-only"></label>
-                            <input class="form-control" type="password" name="password" id="password" placeholder="Choose a password" maxlength="30">
-                        </div>
-                        <div class="form-group">
-                            <label for="password2" class="sr-only"></label>
-                            <input class="form-control" type="password" name="password2" id="password2" placeholder="Confirm password" maxlength="30">
+                            <input class="form-control" type="email" name="editusername" id="editusername" placeholder="Please enter your new username" maxlength="50">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="Sign up">
+                        <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="submit">
+                        </button>
 
                     </div>
                 </div>
@@ -179,6 +122,56 @@
         </div>
     </form>
 
+    <!--forgot password form-->
+    <form method="post" id="emailchangeform">
+        <div class="modal" id="emailchangeModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">
+                    &times;
+                  </button>
+                        <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
+                            Changed your Email?
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--Sign up message from PHP file-->
+                        <div id="forgotpasswordmessage"></div>
+
+                        <div class="form-group">
+                            <label for="email" class="sr-only"></label>
+                            <input class="form-control" type="email" name="editemail" id="editemail" placeholder="Please enter your new email" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="submit">
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--body container-->
+
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed" style="background-color:  #F2F2F2;">
+            <tr data-bs-target="#editpasswordModal" data-bs-toggle="modal">
+                <td>Password</td>
+                <td>Value</td>
+            </tr>
+            <tr data-bs-target="#editusernameModal" data-bs-toggle="modal">
+                <td>username</td>
+                <td>valuse</td>
+            </tr>
+            <tr data-bs-target="#emailchangeModal" data-bs-toggle="modal">
+                <td>Email</td>
+                <td>value</td>
+            </tr>
+        </table>
+    </div>
 
 
     <!-- footer-->

@@ -41,12 +41,26 @@ body:after {
 }
 
 .pull-right {
-    padding-left: 65%;
+    padding-left: 67%;
+    text-align: center;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 990px) {
     .pull-right {
         padding-left: 0%;
+        text-align: left;
+    }
+}
+
+.pull-rightp {
+    padding-left: 50%;
+    text-align: center;
+}
+
+@media (max-width: 990px) {
+    .pull-rightp {
+        padding-left: 0%;
+        text-align: left;
     }
 }
 
@@ -145,4 +159,49 @@ body:after {
     position: absolute;
     bottom: 0;
     padding-top: 5px;
+}
+
+.text-align {
+    text-align: center;
+    align-content: space-between;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#done,
+#allnotes,
+#notearea {
+    display: none;
+}
+
+#notearea {
+    margin: 15px;
+    text-align: center;
+}
+
+#textarea {
+    width: 70%;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    border: solid 2px #8f8f8f;
+    border-left-width: 20px;
+    border-left-color: #8f8f8f;
+    outline: none;
+    font-size: 20px;
+    color: #212529;
+    padding: 10px;
+}
+
+.table-responsive {
+    width: 60%;
+    padding-left: 60px;
+    padding-top: 60px;
+}
+
+@media (max-width: 990px) {
+    .table-responsive {
+        width: 90%;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
 }
