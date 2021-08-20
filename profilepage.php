@@ -1,3 +1,15 @@
+<?php
+session_start();
+include('connection.php');
+
+//logout
+include('logout.php');
+
+//remember me
+include('remember.php');
+
+?>
+
 <!doctype html>
 
 <html lang="en">
@@ -28,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                            <a class="nav-link active" aria-current="page" href="account.php">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Help</a>
@@ -37,7 +49,7 @@
                             <a class="nav-link active" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">My notes</a>
+                            <a class="nav-link active" href="profilepage.php">My notes</a>
                         </li>
                     </ul>
 
