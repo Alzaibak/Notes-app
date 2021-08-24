@@ -107,8 +107,8 @@ if(!$result){
 
 //Send the user an email with a link to activate.php with their email and activation code
 $message = "Please click on this link to activate your account:\n\n";
-$message .= "http://mynotes.thecompletewebhosting.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-if(mail($email, 'Confirm your Registration', $message, 'From:'.'developmentisland@gmail.com')){
+$message .= "http://diphant.com/notes/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+if(mail($email, 'Confirm your Registration', $message, 'From:'.'alzaibak.abdalaziz@gmail.com')){
        echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
 }
         
