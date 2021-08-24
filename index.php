@@ -76,7 +76,7 @@ include('remember.php');
     </div>
 
     <!--signin form-->
-    <form method="post" id="loginform">
+    <form action="login.php" method="post" id="loginform">
         <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -150,7 +150,7 @@ include('remember.php');
     </form>
 
     <!--signup form -->
-    <form method="post" id="signupform">
+    <form  action="signup.php" method="post" id="signupform">
         <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
