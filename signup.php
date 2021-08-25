@@ -68,11 +68,11 @@ $password = hash('sha256', $password);
 //If username exists in the users table print error
 $sql = "SELECT * FROM `Users` WHERE username = $username";
 $result = mysqli_query($link, $sql);
-if(!$result){
-    echo '<div class="alert alert-danger">Error running the query!</div>';
+//if(!$result){
+ //   echo '<div class="alert alert-danger">Error running the query1</div>';
 //    echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
-    exit;
-}
+  //  exit;
+//}
 $results = mysqli_num_rows($result);
 if($results){
     echo '<div class="alert alert-danger">That username is already registered. Do you want to log in?</div>';  exit;
@@ -80,15 +80,15 @@ if($results){
 //If email exists in the users table print error
 $sql = "SELECT * FROM `Users` WHERE email = $email";
 $result = mysqli_query($link, $sql);
-if(!$result){
-    echo '<div class="alert alert-danger">Error running the query!</div>'; exit;
-}
+//if(!$result){
+  //  echo '<div class="alert alert-danger">Error running the query2</div>'; exit;
+//}
 $results = mysqli_num_rows($result);
 if($results){
     echo '<div class="alert alert-danger">That email is already registered. Do you want to log in?</div>';  exit;
 }
 //Create a unique  activation code
-$activationKey = bin2hex(openssl_random_pseudo_bytes(16));
+//$activationKey = bin2hex(openssl_random_pseudo_bytes(16));
     //byte: unit of data = 8 bits
     //bit: 0 or 1
     //16 bytes = 16*8 = 128 bits
@@ -98,18 +98,18 @@ $activationKey = bin2hex(openssl_random_pseudo_bytes(16));
 
 //Insert user details and activation code in the users table
 
-$sql = "INSERT INTO Users (`username`, `email`, `password`, `activation`) VALUES ('$username', '$email', '$password', '$activationKey')";
+$sql = "INSERT INTO Users (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
 $result = mysqli_query($link, $sql);
-if(!$result){
-    echo '<div class="alert alert-danger">There was an error inserting the users details in the database!</div>'; 
+if($result){
+    echo '<div class="alert alert-danger">Thank for your registring!</div>'; 
     exit;
 }
 
 //Send the user an email with a link to activate.php with their email and activation code
-$message = "Please click on this link to activate your account:\n\n";
-$message .= "http://diphant.com/notes/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-if(mail($email, 'Confirm your Registration', $message, 'From:'.'alzaibak.abdalaziz@gmail.com')){
-       echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
-}
+//$message = "Please click on this link to activate your account:\n\n";
+//$message .= "http://diphant.com/notes/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+//if(mail($email, 'Confirm your Registration', $message, 'From:'.'alzaibak.abdalaziz@gmail.com')){
+   //    echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+//}
         
         ?>
