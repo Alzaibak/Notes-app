@@ -101,8 +101,10 @@ if($results){
 $sql = "INSERT INTO Users (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
 $result = mysqli_query($link, $sql);
 if($result){
-    echo '<div class="alert alert-danger">Thank for your registring!</div>'; 
-    exit;
+    header("Location:https://diphant.com/notes/notes/thankyou.php");
+    die();
+    //echo '<div class="alert alert-danger">Thank for your registring!</div>';
+    //exit;
 }
 
 //Send the user an email with a link to activate.php with their email and activation code
@@ -112,4 +114,4 @@ if($result){
    //    echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
 //}
         
-        ?>
+?>
