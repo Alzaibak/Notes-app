@@ -66,25 +66,25 @@ $password = hash('sha256', $password);
 //128 bits -> 32 characters
 //256 bits -> 64 characters
 //If username exists in the users table print error
-$sql = "SELECT * FROM `Users` WHERE username = $username";
+$sql = "SELECT username FROM `Users` WHERE username = '$username'";
 $result = mysqli_query($link, $sql);
-//if(!$result){
- //   echo '<div class="alert alert-danger">Error running the query1</div>';
-//    echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
-  //  exit;
-//}
+if(!$result){
+   echo '<div class="alert alert-danger">Error running the query1</div>';
+   echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
+   exit;
+}
 $results = mysqli_num_rows($result);
-if($results){
+if($results > 1){
     echo '<div class="alert alert-danger">That username is already registered. Do you want to log in?</div>';  exit;
 }
 //If email exists in the users table print error
-$sql = "SELECT * FROM `Users` WHERE email = $email";
+$sql = "SELECT email FROM Users WHERE email = '$email'";
 $result = mysqli_query($link, $sql);
-//if(!$result){
-  //  echo '<div class="alert alert-danger">Error running the query2</div>'; exit;
-//}
+if(!$result){
+    echo '<div class="alert alert-danger">Error running the query2</div>'; exit;
+}
 $results = mysqli_num_rows($result);
-if($results){
+if($results > 1){
     echo '<div class="alert alert-danger">That email is already registered. Do you want to log in?</div>';  exit;
 }
 //Create a unique  activation code
