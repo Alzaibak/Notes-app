@@ -29,16 +29,18 @@ if($errors){
     //Prepare variables for the query
     $email = mysqli_real_escape_string($link, $email);
 $password = mysqli_real_escape_string($link, $password);
-$password = hash('sha256', $password);
+//$password = hash('sha256', $password);
         //Run query: Check combinaton of email & password exists
-$sql = "SELECT * FROM users WHERE email='$email' AND password='$password' AND activation='activated'";
+$sql = "SELECT email FROM Users WHERE email = '".$email."' && password = '".$password."'";
 $result = mysqli_query($link, $sql);
 if(!$result){
-    echo '<div class="alert alert-danger">Error running the query!</div>';
+   echo '<div class="alert alert-danger">Error running the query!</div>';
     exit;
 }
         //If email & password don't match print error
 $count = mysqli_num_rows($result);
+//$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+//$count = $row['Users'];
 if($count !== 1){
     echo '<div class="alert alert-danger">Wrong Username or Password</div>';
 }
@@ -52,6 +54,8 @@ else {
     if(empty($_POST['rememberme'])){
         //If remember me is not checked
         echo "success";
+        header("Location: profilepage.php");
+
     }else{
         //Create two variables $authentificator1 and $authentificator2
         $authentificator1 = bin2hex(openssl_random_pseudo_bytes(10));
@@ -86,7 +90,8 @@ else {
         if(!$result){
             echo  '<div class="alert alert-danger">There was an error storing data to remember you next time.</div>';  
         }else{
-            echo "success";   
+            echo "success";
+   
         }
     }
 }

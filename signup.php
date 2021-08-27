@@ -62,7 +62,7 @@ $username = mysqli_real_escape_string($link, $username);
 $email = mysqli_real_escape_string($link, $email);
 $password = mysqli_real_escape_string($link, $password);
 //$password = md5($password);
-$password = hash('sha256', $password);
+//$password = hash('sha256', $password);
 //128 bits -> 32 characters
 //256 bits -> 64 characters
 //If username exists in the users table print error
@@ -74,7 +74,7 @@ if(!$result){
    exit;
 }
 $results = mysqli_num_rows($result);
-if($results > 1){
+if($results){
     echo '<div class="alert alert-danger">That username is already registered. Do you want to log in?</div>';  exit;
 }
 //If email exists in the users table print error
@@ -101,7 +101,7 @@ if($results > 1){
 $sql = "INSERT INTO Users (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
 $result = mysqli_query($link, $sql);
 if($result){
-    header("Location:https://diphant.com/notes/notes/thankyou.php");
+    header("Location: thankyou.php");
     die();
     //echo '<div class="alert alert-danger">Thank for your registring!</div>';
     //exit;
