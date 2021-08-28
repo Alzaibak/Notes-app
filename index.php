@@ -117,7 +117,7 @@ include('remember.php');
     </form>
 
     <!--forgot password form-->
-    <form method="post" id="forgotpasswordform">
+    <form action="forgot-password.php" method="post" id="forgotpasswordform">
         <div class="modal" id="forgotpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -140,7 +140,7 @@ include('remember.php');
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="submit">
+                        <input id='forgotpasswordbuttom' class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="submit">
                         </button>
 
                     </div>
@@ -165,7 +165,7 @@ include('remember.php');
                     <div class="modal-body">
 
                         <!--Sign up message from PHP file-->
-                        <div id="signupmessage"></div>
+                        <div id="signupmessage">  </div>
 
                         <div class="form-group">
                             <label for="username" class="sr-only"></label>
