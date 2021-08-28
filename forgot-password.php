@@ -3,21 +3,54 @@
 session_start();
 //Connect to the database
 include('connection.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Password Reset</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            h1{
+                color:purple;   
+            }
+            .contactForm{
+                border:1px solid #7c73f6;
+                margin-top: 50px;
+                border-radius: 15px;
+            }
+        </style> 
+
+    </head>
+        <body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10 contactForm">
+            <h1>Reset Password:</h1>
+            <div id="resultmessage"></div>
+
+            <?php
 
 //Check user inputs
     //Define error messages
-$missingEmail = '<p><strong>Please enter your email address!</strong></p>';
+$invalidemail =  '<p><strong>please enter your email</strong></p>';
+$validationmessage = '<p><strong>Please click on the massage you recieved by email</strong></p>';
 $invalidEmail = '<p><strong>Please enter a valid email address!</strong></p>';
-    //Get email
+
+
+    //Get email 
     //Store errors in errors variable
-if(empty($_POST["forgotemail"])){
-    $errors .= $missingEmail;   
-}else{
-    $email = filter_var($_POST["forgotemail"], FILTER_SANITIZE_EMAIL);
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errors .= $invalidEmail;   
-    }
-}
+if (empty($_POST["forgotpasswordemail"])) {
+    $errors .= $invalidemail; 
+} else {
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errors .= $invalidEmail;
+    }}
+
     
     //If there are any errors
         //print error message
@@ -26,46 +59,31 @@ if($errors){
     echo $resultMessage;
     exit;
 }
+
+
     //else: No errors
         //Prepare variables for the query
-$email = mysqli_real_escape_string($link, $email);
+$email = mysqli_real_escape_string($link, $_POST['forgotpasswordemail']);
         //Run query to check if the email exists in the users table
-$sql = "SELECT * FROM users WHERE email = '$email'";
+$sql = "SELECT * FROM Users WHERE email = '$email'";
 $result = mysqli_query($link, $sql);
 if(!$result){
     echo '<div class="alert alert-danger">Error running the query!</div>'; exit;
 }
 $count = mysqli_num_rows($result);
-//If the email does not exist
-            //print error message
-if($count != 1){
+
+
+if($count == 1){
+    $to = $email;
+    $subject = "Reset your password on online notes";
+    $msg = "please click on this to reset your password \"http://diphant.com/notes/notes/resetpassword.php";
+    $msg = wordwrap($msg,70);
+    $headers = "From: onlinenotes@diphant.com";
+    mail($to, $subject, $msg, $headers);
+    echo '<div class="alert alert-danger">We have e-mailed your password reset link!</div>';
+}else {
     echo '<div class="alert alert-danger">That email does not exist on our database!</div>';  exit;
-}
-        
-        //else
-            //get the user_id
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-$user_id = $row['user_id'];
-            //Create a unique  activation code
-$key = bin2hex(openssl_random_pseudo_bytes(16));
-            //Insert user details and activation code in the forgotpassword table
-$time = time();
-$status = 'pending';
-$sql = "INSERT INTO forgotpassword (`user_id`, `rkey`, `time`, `status`) VALUES ('$user_id', '$key', '$time', '$status')";
-$result = mysqli_query($link, $sql);
-if(!$result){
-    echo '<div class="alert alert-danger">There was an error inserting the users details in the database!</div>'; 
-    exit;
-}
+};
 
-            //Send email with link to resetpassword.php with user id and activation code
-
-$message = "Please click on this link to reset your password:\n\n";
-$message .= "http://mynotes.thecompletewebhosting.com/resetpassword.php?user_id=$user_id&key=$key";
-if(mail($email, 'Reset your password', $message, 'From:'.'developmentisland@gmail.com')){
-        //If email sent successfully
-                //print success message
-       echo "<div class='alert alert-success'>An email has been sent to $email. Please click on the link to reset your password.</div>";
-}
 
     ?>
