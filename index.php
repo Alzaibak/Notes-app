@@ -76,12 +76,12 @@ include('remember.php');
     </div>
 
     <!--signin form-->
-    <form action="login.php" method="post" id="loginform">
+    <form method="post" id="loginform">
         <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                        <button class="close" data-dismiss="modal" aria-label="Close">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -117,12 +117,12 @@ include('remember.php');
     </form>
 
     <!--forgot password form-->
-    <form action="forgot-password.php" method="post" id="forgotpasswordform">
+    <form  method="post" id="forgotpasswordform">
         <div class="modal" id="forgotpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                    <button class="close" data-dismiss="modal" aria-label="Close">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -150,12 +150,12 @@ include('remember.php');
     </form>
 
     <!--signup form -->
-    <form  action="signup.php" method="post" id="signupform">
+    <form  method="post" id="signupform">
         <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                    <button class="close" data-dismiss="modal" aria-label="Close">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -206,9 +206,96 @@ include('remember.php');
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="jscode.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      //Ajax Call for the sign up form 
+//Once the form is submitted
+$(signupform).submit(function(event) {
+    //prevent default php processing
+    event.preventDefault();
+    //collect user inputs
+    var datatopost = $(this).serializeArray();
+    console.log(datatopost);
+    //send them to signup.php using AJAX
+    $.ajax({
+        url: "signup.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data) {
+            if (data) {
+                $("#signupmessage").html(data);
+            }
+        },
+        error: function() {
+            $("#signupmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+
+        }
+
+    });
+
+});
+
+//Ajax Call for the login form
+//Once the form is submitted
+$("#loginform").submit(function(event) {
+    //prevent default php processing
+    event.preventDefault();
+    //collect user inputs
+    var datatopost = $(this).serializeArray();
+    //    console.log(datatopost);
+    //send them to login.php using AJAX
+    $.ajax({
+        url: "login.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data) {
+            if (data == "success") {
+                window.location = "account.php";
+            } else {
+                $('#loginpmessage').html(data);
+            }
+        },
+        error: function() {
+            $("#loginmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+
+        }
+
+    });
+
+});
+
+
+//Ajax Call for the forgot password form
+//Once the form is submitted
+$("#forgotpasswordform").submit(function(event) {
+    //prevent default php processing
+    event.preventDefault();
+    //collect user inputs
+    var datatopost = $(this).serializeArray();
+    //    console.log(datatopost);
+    //send them to signup.php using AJAX
+    $.ajax({
+        url: "forgot-password.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data) {
+
+            $('#forgotpasswordmessage').html(data);
+        },
+        error: function() {
+            $("#forgotpasswordmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+
+        }
+    });
+
+    $("#cancel").click(function(event) {
+    
+    });
+
+
+});
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
