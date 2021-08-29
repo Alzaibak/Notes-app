@@ -3,36 +3,7 @@
 session_start();
 //Connect to the database
 include('connection.php');
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Password Reset</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            h1{
-                color:purple;   
-            }
-            .contactForm{
-                border:1px solid #7c73f6;
-                margin-top: 50px;
-                border-radius: 15px;
-            }
-        </style> 
-
-    </head>
-        <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-offset-1 col-sm-10 contactForm">
-            <h1>Reset Password:</h1>
-            <div id="resultmessage"></div>
-
-            <?php
 
 //Check user inputs
     //Define error messages
