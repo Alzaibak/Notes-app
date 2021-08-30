@@ -59,6 +59,7 @@ if($errors){
 
 //Prepare variables for the queries
 $username = mysqli_real_escape_string($link, $username);
+//$useremail = $_POST["email"]
 $email = mysqli_real_escape_string($link, $email);
 $password = mysqli_real_escape_string($link, $password);
 //$password = md5($password);
@@ -84,7 +85,7 @@ if(!$result){
     echo '<div class="alert alert-danger">Error running the query2</div>'; exit;
 }
 $results = mysqli_num_rows($result);
-if($results > 1){
+if($results == 1){
     echo '<div class="alert alert-danger">That email is already registered. Do you want to log in?</div>';  exit;
 }
 //Create a unique  activation code
@@ -101,7 +102,7 @@ if($results > 1){
 $sql = "INSERT INTO Users (`username`, `email`, `password`) VALUES ('$username', '$email', '$password')";
 $result = mysqli_query($link, $sql);
 if($result){
-    header("Location: thankyou.php");
+    echo "<script> window.location.assign('thankyou.php'); </script>";
     die();
     //echo '<div class="alert alert-danger">Thank for your registring!</div>';
     //exit;
