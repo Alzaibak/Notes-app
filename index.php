@@ -35,7 +35,7 @@ include('remember.php');
     <div class="container-fluid navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Notes</a>
+                <a class="navbar-brand" href="index.php">Notes</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -81,7 +81,7 @@ include('remember.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal" aria-label="Close">
+                        <button class="close" data-bs-dismiss="modal" type="buttom">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -104,10 +104,10 @@ include('remember.php');
                     </div>
                     <div class="checkbox">
                         <label for="" style="width: 50%;"> <input type="checkbox" name="remeberme" id="rememberme"> remember me</label>
-                        <a class="pull-right" data-bs-target="#forgotpasswordModal" data-bs-toggle="modal" data-dismiss="modal">Forgot password?</a>
+                        <a class="pull-right" data-bs-target="#forgotpasswordModal" data-bs-toggle="modal" data-bs-dismiss="modal">Forgot password?</a>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn pull-left" data-dismiss="modal" data-bs-target="#signupModal" data-bs-toggle="modal"> Register </button>
+                        <button type="button" class="btn pull-left" data-bs-dismiss="modal" data-bs-target="#signupModal" data-bs-toggle="modal"> Register </button>
                         <input class="btn yellow" style="margin: 0; background-color: #fbb034; background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);" name="signup" type="submit" value="Sign in">
 
                     </div>
@@ -122,7 +122,7 @@ include('remember.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <button class="close" data-dismiss="modal" aria-label="Close">
+                    <button class="close" data-bs-dismiss="modal" type="buttom">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -155,7 +155,7 @@ include('remember.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <button class="close" data-dismiss="modal" aria-label="Close">
+                    <button class="close" data-bs-dismiss="modal" type="buttom">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">

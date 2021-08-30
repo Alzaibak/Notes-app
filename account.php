@@ -74,7 +74,7 @@ include('remember.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                        <button class="close" data-bs-dismiss="modal">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -84,7 +84,7 @@ include('remember.php');
                     <div class="modal-body">
 
                         <!--Sign up message from PHP file-->
-                        <div id="forgotpasswordmessage"></div>
+                        <div id="updatepasswordmessage"></div>
 
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
@@ -116,7 +116,7 @@ include('remember.php');
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                        <button class="close" data-bs-dismiss="modal">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -126,11 +126,11 @@ include('remember.php');
                     <div class="modal-body">
 
                         <!--Sign up message from PHP file-->
-                        <div id="forgotpasswordmessage"></div>
+                        <div id="editusernamemessage"></div>
 
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="editusername" id="editusername" placeholder="Please enter your new username" maxlength="50">
+                            <input class="form-control" type="text" name="editusername" id="editusername" placeholder="Please enter your new username" maxlength="50">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -143,13 +143,13 @@ include('remember.php');
         </div>
     </form>
 
-    <!--forgot password form-->
+    <!--edite email form-->
     <form method="post" id="emailchangeform">
         <div class="modal" id="emailchangeModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
+                        <button class="close" data-bs-dismiss="modal">
                     &times;
                   </button>
                         <h4 style="margin: 10px; text-align: center;" id="myModalLabel">
@@ -159,7 +159,7 @@ include('remember.php');
                     <div class="modal-body">
 
                         <!--Sign up message from PHP file-->
-                        <div id="forgotpasswordmessage"></div>
+                        <div id="editemailmessage"></div>
 
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
@@ -206,7 +206,93 @@ include('remember.php');
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        // Ajax call to updateusername.php
+            $("#editusernameform").submit(function(event){ 
+        //prevent default php processing
+            event.preventDefault();
+            //collect user inputs
+            var datatopost = $(this).serializeArray();
+            //    console.log(datatopost);
+            //send them to updateusername.php using AJAX
+        $.ajax({
+        url: "updateusername.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data){
+            if(data){
+                $("#editusernamemessage").html(data);
+            }else{
+                location.reload();   
+            }
+        },
+        error: function(){
+            $("#editusernamemessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+            
+        }
+    
+         });
+
+            });
+
+            // Ajax call to updatepassword.php
+$("#editpasswordform").submit(function(event) {
+        //prevent default php processing
+        event.preventDefault();
+        //collect user inputs
+        var datatopost = $(this).serializeArray();
+        //  console.log(datatopost);
+         //send them to login.php using AJAX
+    $.ajax({
+        url: "updatepassword.php",
+        type: "POST",
+        data: datatopost,
+        success: function(data) {
+            if (data == "success") {
+                window.location = "updatepassword.php";
+            } else {
+                $('#updatepasswordmessage').html(data);
+            }
+        },
+        error: function() {
+            $("#updatepasswordmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+
+        }
+
+    });
+
+});
+
+
+
+            // Ajax call to updateemail.php
+            $("#emailchangeform").submit(function(event){ 
+                //prevent default php processing
+                event.preventDefault();
+                //collect user inputs
+                var datatopost = $(this).serializeArray();
+            //    console.log(datatopost);
+                //send them to updateusername.php using AJAX
+                $.ajax({
+                    url: "updateemail.php",
+                    type: "POST",
+                    data: datatopost,
+                    success: function(data){
+                        if(data){
+                            $("#editemailmessage").html(data);
+                        }
+                    },
+                    error: function(){
+                        $("#editemailmessage").html("<div class='alert alert-danger'>There was an error with the Ajax Call. Please try again later.</div>");
+                        
+                    }
+                
+                });
+
+            });
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

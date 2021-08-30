@@ -53,7 +53,8 @@ else {
     $_SESSION['email']=$row['email'];
     
     if(empty($_POST['rememberme'])){
-        echo '<div class="alert alert-info">Your are in</div>';
+        echo '<div class="alert alert-info">you are successfully logged in</div>';
+        echo "<script> window.location.assign('profilepage.php'); </script>";
         //If remember me is not checked
        // header("Location: profilepage.php");
 
