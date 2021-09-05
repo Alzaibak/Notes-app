@@ -88,6 +88,10 @@ include('remember.php');
 
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
+                            <input class="form-control" type="email" name="useremail" id="useremail" placeholder="Please enter your email" maxlength="50">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="sr-only"></label>
                             <input class="form-control" type="password" name="oldpassword" id="oldpassword" placeholder="Please enter your old password" maxlength="50">
                         </div>
                         <div class="form-group">
@@ -127,7 +131,10 @@ include('remember.php');
 
                         <!--Sign up message from PHP file-->
                         <div id="editusernamemessage"></div>
-
+                        <div class="form-group">
+                            <label for="text" class="sr-only"></label>
+                            <input class="form-control" type="text" name="currentusername" id="currentusername" placeholder="Please enter your current username" maxlength="50">
+                        </div>
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
                             <input class="form-control" type="text" name="editusername" id="editusername" placeholder="Please enter your new username" maxlength="50">
@@ -160,7 +167,11 @@ include('remember.php');
 
                         <!--Sign up message from PHP file-->
                         <div id="editemailmessage"></div>
-
+                        
+                        <div class="form-group">
+                            <label for="email" class="sr-only"></label>
+                            <input class="form-control" type="email" name="useremail2" id="useremail2" placeholder="Please enter your current email" maxlength="50">
+                        </div>
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
                             <input class="form-control" type="email" name="editemail" id="editemail" placeholder="Please enter your new email" maxlength="50">
