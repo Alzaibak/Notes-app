@@ -193,14 +193,18 @@ include('remember.php');
             <tr data-bs-target="#editpasswordModal" data-bs-toggle="modal">
                 <td>Password</td>
                 <td>Value</td>
+                <td>Edit ?</td>
             </tr>
             <tr data-bs-target="#editusernameModal" data-bs-toggle="modal">
                 <td>username</td>
                 <td>valuse</td>
+                <td>Edit ?</td>
+
             </tr>
             <tr data-bs-target="#emailchangeModal" data-bs-toggle="modal">
                 <td>Email</td>
                 <td>value</td>
+                <td>Edit ?</td>
             </tr>
         </table>
     </div>

@@ -81,7 +81,7 @@ else {
             return $b;
         }
         $f2authentificator2 = f2($authentificator2);
-        $user_id = $_SESSION['user_id'];
+        $user_id = $_SESSION['id'];
         $expiration = date('Y-m-d H:i:s', time() + 1296000);
         
         $sql = "INSERT INTO rememberme
