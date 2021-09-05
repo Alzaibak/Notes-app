@@ -6,13 +6,13 @@ include ('connection.php');
 
 
 //Get username sent through Ajax
-$currentusername = $_POST['editusername'];
-$missingCurrentusername = '<p><strong>Please enter your Current username!</strong></p>';
+$currentemail = $_POST['useremail2'];
+$missingCurrentemail = '<p><strong>Please enter your Current username!</strong></p>';
 $missingnewusername = '<p><strong>Please enter your new username!</strong></p>';
 $usedusername = '<p><strong>This Username is already used!</strong></p>';
 
-if(empty($_POST["currentusername"])){
-    $errors .= $missingCurrentusername; 
+if(empty($_POST["useremail2"])){
+    $errors .= $missingCurrentemail; 
 };
 
 if (empty($_POST["editusername"])){
@@ -31,7 +31,7 @@ if (empty($_POST["editusername"])){
     }
     $count = mysqli_num_rows($result);
     if ($count !== 1) {
-        echo '<div class="alert alert-danger">this username is not found</div>';
+        echo '<div class="alert alert-danger">This username is not found</div>';
     }
 };
 
