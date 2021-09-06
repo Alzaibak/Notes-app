@@ -55,10 +55,10 @@ include('remember.php');
 
                     <ul class="navbar-nav pull-rightp">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#loginModal" data-bs-toggle="modal">Hello <b>username</b></a>
+                            <a class="nav-link active" href="#loginModal" data-bs-toggle="modal">Hello <b><?= $_SESSION['username']?></b></a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn signup" data-bs-target="#signupModal" data-bs-toggle="modal"> Logout</button>
+                            <a href="logout.php" type="button" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn logout" id="logout"> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -85,11 +85,6 @@ include('remember.php');
 
                         <!--Sign up message from PHP file-->
                         <div id="updatepasswordmessage"></div>
-
-                        <div class="form-group">
-                            <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="useremail" id="useremail" placeholder="Please enter your email" maxlength="50">
-                        </div>
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
                             <input class="form-control" type="password" name="oldpassword" id="oldpassword" placeholder="Please enter your old password" maxlength="50">
@@ -132,10 +127,6 @@ include('remember.php');
                         <!--Sign up message from PHP file-->
                         <div id="editusernamemessage"></div>
                         <div class="form-group">
-                            <label for="text" class="sr-only"></label>
-                            <input class="form-control" type="text" name="currentusername" id="currentusername" placeholder="Please enter your current username" maxlength="50">
-                        </div>
-                        <div class="form-group">
                             <label for="email" class="sr-only"></label>
                             <input class="form-control" type="text" name="editusername" id="editusername" placeholder="Please enter your new username" maxlength="50">
                         </div>
@@ -167,11 +158,7 @@ include('remember.php');
 
                         <!--Sign up message from PHP file-->
                         <div id="editemailmessage"></div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="sr-only"></label>
-                            <input class="form-control" type="email" name="useremail2" id="useremail2" placeholder="Please enter your current email" maxlength="50">
-                        </div>
+                   
                         <div class="form-group">
                             <label for="email" class="sr-only"></label>
                             <input class="form-control" type="email" name="editemail" id="editemail" placeholder="Please enter your new email" maxlength="50">
@@ -189,24 +176,30 @@ include('remember.php');
     <!--body container-->
 
     <div class="table-responsive">
+    <?php if(isset($_SESSION["id"])) { ?>
         <table class="table table-hover table-condensed" style="background-color:  #F2F2F2;">
-            <tr data-bs-target="#editpasswordModal" data-bs-toggle="modal">
-                <td>Password</td>
-                <td>Value</td>
-                <td>Edit ?</td>
-            </tr>
             <tr data-bs-target="#editusernameModal" data-bs-toggle="modal">
                 <td>username</td>
-                <td>valuse</td>
+                <td><?= $_SESSION['username'] ?></td>
                 <td>Edit ?</td>
 
             </tr>
             <tr data-bs-target="#emailchangeModal" data-bs-toggle="modal">
                 <td>Email</td>
-                <td>value</td>
+                <td><?= $_SESSION['email'] ?></td>
                 <td>Edit ?</td>
             </tr>
+            <tr data-bs-target="#editpasswordModal" data-bs-toggle="modal">
+                <td>Password</td>
+                <td><?= $_SESSION['password'] ?></td>
+                <td>Edit ?</td>
+            </tr>
+            <tr>
+                <td>Your ID</td>
+                <td><?= $_SESSION['id'] ?></td>
+            </tr>
         </table>
+        <?php } else {  echo "<script> window.location.assign('index.php'); </script>";}?>
     </div>
 
 
