@@ -58,7 +58,7 @@ include('remember.php');
                             <a class="nav-link active" href="#loginModal" data-bs-toggle="modal">Hello <b><?= $_SESSION['username']?></b></a>
                         </li>
                         <li class="nav-item">
-                            <a href="logout.php" type="button" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn logout" id="logout"> Logout</a>
+                            <a href="index.php?logout=1" style="margin: 0; padding-top: 8px; padding-left: 0px;" class="btn logout" id="logout"> Logout</a>
                         </li>
                     </ul>
                 </div>
