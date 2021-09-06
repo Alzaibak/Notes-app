@@ -32,7 +32,7 @@ if($errors){
 $password = mysqli_real_escape_string($link, $password);
 //$password = hash('sha256', $password);
         //Run query: Check combinaton of email & password exists
-$sql = "SELECT email FROM Users WHERE email = '".$email."' && password = '".$password."'";
+$sql = "SELECT * FROM Users WHERE email = '".$email."' && password = '".$password."'";
 $result = mysqli_query($link, $sql);
 if(!$result){
    echo '<div class="alert alert-danger">Error running the query!</div>';
@@ -47,64 +47,15 @@ if($count !== 1){
 }
 else {
     //log the user in: Set session variables
-    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    $_SESSION['user_id']=$row['user_id'];
+    $row = $result->fetch_assoc();
+    $_SESSION['id']=$row['id'];
+    $_SESSION['password']=$row['password'];
     $_SESSION['username']=$row['username'];
     $_SESSION['email']=$row['email'];
-    
-    if(empty($_POST['rememberme'])){
-        echo '<div class="alert alert-info">you are successfully logged in</div>';
-        echo "<script> window.location.assign('profilepage.php'); </script>";
-        //If remember me is not checked
-       // header("Location: profilepage.php");
+    echo '<div class="alert alert-info">you are successfully logged in</div>';
+    echo "<script> window.location.assign('profilepage.php'); </script>";
 
-    }else{
-        //Create two variables $authentificator1 and $authentificator2
-        $authentificator1 = bin2hex(openssl_random_pseudo_bytes(10));
-        //2*2*...*2
-        $authentificator2 = openssl_random_pseudo_bytes(20);
-        //Store them in a cookie
-        function f1($a, $b){
-            $c = $a . "," . bin2hex($b);
-            return $c;
-        }
-        $cookieValue = f1($authentificator1, $authentificator2);
-        setcookie(
-            "rememberme",
-            $cookieValue,
-            time() + 1296000
-        );
-        
-        //Run query to store them in rememberme table
-        function f2($a){
-            $b = hash('sha256', $a); 
-            return $b;
-        }
-        $f2authentificator2 = f2($authentificator2);
-        $user_id = $_SESSION['id'];
-        $expiration = date('Y-m-d H:i:s', time() + 1296000);
-        
-        $sql = "INSERT INTO rememberme
-        (`authentificato1`, `authentificato2`, `user_id`, `expires`)
-        VALUES
-        ('$authentificator1', '$f2authentificator2', '$user_id', '$expiration')";
-        $result = mysqli_query($link, $sql);
-        if(!$result){
-            echo  '<div class="alert alert-danger">There was an error storing data to remember you next time.</div>';  
-        }else{
-            echo "success";
-   
-        }
     }
-}
-    }
+};
 
-            //else
-                //Create two variables $authentificator1 and $authentificator2
-                //Store them in a cookie
-                //Run query to store them in rememberme table
-                //If query unsuccessful
-                    //print error
-                //else
-                    //print "success"
-                    ?>
+?>
