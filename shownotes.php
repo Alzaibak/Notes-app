@@ -18,12 +18,12 @@ $user_id = $_SESSION['id'];
     $count = mysqli_num_rows($result);
     if ($count>0) {
         while ($row = $result->fetch_assoc()) {
-            $note_id = $row['notid'];
+            $note_id = $row['noteid'];
             $note = $row['note'];
             $time = $row['time'];
             $time = date("F d, Y h:i:s A", $time);
             echo "
-            <div class='note container' style='padding-top: 25px;'>
+            <div class='note container' style='padding-top: 25px;' id='notes'>
                 <div class='row'>
                     <div class='offset-lg-3 col-lg-6 col-md-6 col-8'>
                         <div class='noteheader' id='note_id' style='color: currentcolor; background-color: ghostwhite; line-height: 1.0; padding: 5px; border: solid 1px black; border-radius: 5px;'>$note_id
