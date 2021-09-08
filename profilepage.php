@@ -121,6 +121,13 @@ include('remember.php');
 
     <div class=" container" id="container">
 
+        <div id="alert" class="alert alert-danger" style="display: none;">
+            <a data-bs-dismiss="alert" class="close">
+                &times;
+            </a>
+            <p class="alertContent" id="alertContent"></p>
+        </div>
+
         <div class="col-md-offset-3 col-md-6 col-12">
 
         </div>
@@ -193,16 +200,17 @@ include('remember.php');
     $('#add').click(function(){
         $.ajax({
             url: "addnotes.php",
+            type: "POST",
             success: function(data){
                 if(data == 'error'){
+                    $("#alert").css("display", "block");
                     $('#alertContent').text("There was an issue inserting the new note in the database!");
-                    $("#alert").fadeIn();
                 }else{
                     //update activeNote to the id of the new note
-                    //activeNote = data;
-                    //$("textarea").val("");
+                    activeNote = data;
+                    $("textarea").val("");
                     //show hide elements
-                    showHide(["#notearea", "#allnotes" ,"#add"], ["#notes", "#addnote", "#edit", "#done"]);
+                    showHide(["#notearea", "#allnotes" ,"#add"], ["#notes", "#addnote", "#edit", "#done" ]);
                     $("textarea").focus();
                     
                 }
@@ -305,7 +313,7 @@ include('remember.php');
                 url: "deletenote.php",
                 type: "POST",
                 //we need to send the id of the note to be deleted
-                data: {id:deleteButton.next().attr("id")},
+                data: {id:deleteButton.next().attr("note_id")},
                 success: function (data){
                     if(data == 'error'){
                         $('#alertContent').text("There was an issue delete the note from the database!");
