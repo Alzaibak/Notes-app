@@ -139,10 +139,10 @@ include('remember.php');
             <button id="done" class="btn btn-lg yellow" type="button" style="background-color:#C3F700; min-width: 10%;"> Done</button>
             <button id="allnotes" class="btn btn-lg yellow" type="button" style="min-width: 10%;"> All notes</button>
         </div>
-
         <div id="notearea">
             <textarea name="textarea" id="textarea" name="textarea" cols="30" rows="10"></textarea>
         </div>
+       
 
         <div id="notes" class="notes">
 
@@ -200,10 +200,9 @@ include('remember.php');
     $('#add').click(function(){
         $.ajax({
             url: "addnotes.php",
-            type: "POST",
             success: function(data){
                 if(data == 'error'){
-                    $("#alert").css("display", "block");
+                    //$("#alert").css("display", "block");
                     $('#alertContent').text("There was an issue inserting the new note in the database!");
                 }else{
                     //update activeNote to the id of the new note
@@ -310,7 +309,7 @@ include('remember.php');
             var deleteButton = $(this);
             //send ajax call to delete note
             $.ajax({
-                url: "deletenote.php",
+                url: "deletenotes.php",
                 type: "POST",
                 //we need to send the id of the note to be deleted
                 data: {id:deleteButton.next().attr("note_id")},
