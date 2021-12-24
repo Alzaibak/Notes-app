@@ -25,4 +25,9 @@ It is an online notes web application that allows the users to create un account
 <img width="953" alt="add new notes" src="https://user-images.githubusercontent.com/62395686/147372764-56d6f3fb-831a-4f5d-8d52-9f69a8041e98.PNG">
 
 
-Note: In order to run this web app, it should creating a connection php file with the database. Also it should create three table 
+Note: In order to run this web app, it is mandatory to create a database and adding the needed information (database username , password, and name) to the connection php file.
+      And you need to creare two tables with thier (columns)
+      Useres( id , username, email, password) 
+      Notes( noteid , note, time, user_id)
+      
+ Thank you for your reading
