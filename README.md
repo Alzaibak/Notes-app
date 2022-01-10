@@ -8,7 +8,7 @@ It is an online notes web application that allows the users to create un account
 
 <img width="959" alt="home page" src="https://user-images.githubusercontent.com/62395686/147372582-ca697007-bb2b-4621-8e3a-a21b675d3da2.PNG">
 
-2. Sign up model: shows alert message in case of invalid information or un account ready excite
+2. Sign up model: shows alert message in case of invalid information or un account ready exist
 
 <img width="949" alt="creating account" src="https://user-images.githubusercontent.com/62395686/147372637-44f13104-49a5-4bf2-9d80-655355329da9.PNG">
 
